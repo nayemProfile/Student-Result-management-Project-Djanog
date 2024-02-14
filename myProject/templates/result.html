@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Result Card</title>
+    <style>
+        /* Resetting default margin and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .result-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+            margin: 50px auto;
+        }
+
+        .result-card h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .result-details {
+            border-top: 1px solid #ccc;
+            margin-top: 10px;
+            padding-top: 10px;
+        }
+
+        .result-details p {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .result-details strong {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    {% include 'base.html' %}
+    <div class="result-card">
+        <h2>{{ student.student_name }}</h2>
+        <div class="result-details">
+            {% for grade in result %}
+            <p><strong>Subject:</strong> {{ grade.subject_model.subject_title }}</p>
+            <p><strong>Grade:</strong> {{ grade.marks }}</p>
+            {% endfor %}
+        </div>
+        <p><strong>Total Credits:</strong> {{ total_credit }}</p>
+        <p><strong>Total Grade Points:</strong> {{ total_grade_point }}</p>
+        <p><strong>CGPA:</strong> {{ round_cgpa }}</p>
+    </div>
+</body>
+</html>

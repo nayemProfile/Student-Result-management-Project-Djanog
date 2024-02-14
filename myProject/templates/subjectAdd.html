@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Student</title>
+    <style>
+        /* Basic CSS for the table */
+        table {
+          width: 100%;
+          border-collapse: collapse;
+        }
+      
+        th, td {
+          border: 1px solid #ddd;
+          padding: 8px;
+          text-align: left;
+        }
+      
+        th {
+          background-color: #f2f2f2;
+        }
+      </style>
+</head>
+<body>
+    {% include 'base.html' %}
+
+
+    <div>
+        <table>
+            <thead>
+              <tr>
+                <th>Subject Name</th>
+                <th>Subject Code</th>
+                <th>Subject Credit</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for i in subject %}
+              <tr>
+                <td>{{i.subject_title}}</td>
+                <td>{{i.subject_code}}</td>
+                <td>{{i.subject_credit}}</td>
+                <td>
+                    <a href="{% url 'subjectUpdate' i.id %}">Edit</a>
+                    <a href="{% url 'subjectDelete' i.id %}">Delete</a>
+                </td>
+              </tr>
+            {% endfor %}
+              <!-- Add more rows as needed -->
+            </tbody>   
+          </table>
+    </div>
+    <br>
+    <br>
+<div>
+    
+    <form action="{% url 'subjectAdd' %}" method="post">
+        {% csrf_token %}
+        <table>
+            {{form.as_p}}
+        </table>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+</body>
+</html>

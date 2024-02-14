@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Student</title>
+    <style>
+        /* Basic CSS for the table */
+        table {
+          width: 100%;
+          border-collapse: collapse;
+        }
+      
+        th, td {
+          border: 1px solid #ddd;
+          padding: 8px;
+          text-align: left;
+        }
+      
+        th {
+          background-color: #f2f2f2;
+        }
+      </style>
+</head>
+<body>
+    {% include 'base.html' %}
+
+    <br>
+<div>
+    <form action="", method="post">
+        {% csrf_token %}
+        <table>
+            {{form.as_p}}
+        </table>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+</body>
+</html>
